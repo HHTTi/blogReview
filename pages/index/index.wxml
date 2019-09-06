@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<view class="root">
+  <view class="blog-hd">
+    <view class="blog-title">{{title}}</view>
+  </view>
+  <view class="blog-bd">
+    <view class="blog-review">
+      <view class="add-review">
+        <view class="review">精选留言</view>
+        <view class="add" bind:tap="addReview">写留言</view>
+      </view>
+      <view class="reivew-list">
+        <block wx:for-items="{{reivewList}}" wx:key="{{item.id}}">
+          <view class="item">
+            <view class="avatarUrl">
+              <image src="{{item.avatarUrl}}" />
+            </view>
+            <view class="item-content">
+              <view class="item-head">
+                <view class="nickName">
+                  {{item.nickName}}
+                  <view wx:if="{{item.isTop}}" class="top">置顶</view>
+                </view>
+                <view class="parised">{{item.parised}}</view>
+              </view>
+              <view class="item-body">
+                <view class="content">{{item.content}}</view>
+              </view>
+              <view wx:if="{{item.hasAuthorReply}}" class="item-foot">
+                <view class="author">
+                  作者
+                </view>
+                <view class="author-reply">
+                  {{item.authorReply}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+   
+  </view>
+  <view class="blog-ft">
+  
+  </view>
+</view>

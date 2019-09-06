@@ -1,0 +1,78 @@
+/**index.wxss**/
+.blog-hd {
+  width: 100%;
+  padding: 40rpx 0;
+  background: #fff;
+}
+.blog-title {
+  padding: 0 28rpx;
+}
+
+.blog-bd {
+  padding: 48rpx 28rpx 0;
+}
+
+.add-review {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+.review {
+  color: #999;
+}
+.add {
+  color: #1890FF;
+}
+
+.reivew-list {
+  padding: 20rpx 0;
+}
+.item {
+  display: flex;
+  flex-flow: row nowrap;
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+  
+}
+.item-content {
+  flex-grow:1;
+}
+
+.avatarUrl {
+  padding-right: 20rpx;
+}
+.avatarUrl image {
+  width: 100rpx;
+  height: 100rpx;
+}
+.item-content {
+
+}
+.item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row nowrap;
+}
+.nickName {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+.top {
+  display: block;
+  margin-left: 10rpx;
+  padding-left: 10rpx ;
+  padding-right: 10rpx;
+  border-radius: 6rpx;
+  background: #c1c1c1;
+  color:#fff;
+
+}
+
+.author {
+  padding-left: 10rpx;
+  color: #6E6E6E;
+  border-left: 2px solid #1890FF;
+}
