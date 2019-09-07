@@ -1,0 +1,20 @@
+/* pages/article_list/article_list.wxss */
+
+.article_list {
+  padding: 28rpx;
+
+}
+
+.article_item {
+  margin-top: 48rpx;
+  width: 100%;
+  background: #fff;
+  border-radius: 5rpx;
+  overflow: hidden;
+}
+.item-img image {
+  width: 100%;
+}
+.item-body {
+  padding: 18rpx 28rpx;
+}

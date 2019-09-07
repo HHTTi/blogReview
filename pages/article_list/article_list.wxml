@@ -1,0 +1,21 @@
+<!--pages/article_list/article_list.wxml-->
+<view class="root">
+  <view class="container">
+    <view class="article_list">
+      <block wx:for="{{list}}" wx:key ="index" wx:for-item="item" wx:for-index="index">
+        <view class="item">
+          <view class="time">{{item.create_time.getDay()}}</view>
+          <view class="article_item">
+            <view class="item-img">
+              <image src="{{item.thumb_url}}" mode="widthFix"></image>
+            </view>
+            <view class="item-body">
+              <view class="item-title">{{item.title}}</view>
+              
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

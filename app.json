@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/article_list/article_list",
     "pages/index/index",
     "pages/logs/logs",
     "pages/addReview/addReview",
@@ -26,7 +27,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/article_list/article_list",
         "iconPath": "image/list.png",
         "selectedIconPath": "image/list_active.png",
         "text": "文章列表"

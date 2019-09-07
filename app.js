@@ -50,7 +50,7 @@ App({
 
   globalData: {
     title: '蜡笔小新 |壁纸+图片',
-    baseurl:'https://www.hhtti.cn',
+    baseurl:'https://www.hhtti.cn/wx',
     userInfo: null,
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),

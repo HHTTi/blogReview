@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    base_url:app.base_url,
     title:'蜡笔小新 |壁纸+图片',
     reivewList:[
       { 
@@ -57,8 +58,8 @@ Page({
     console.log('触发 onHide事件')
   },
   onReady: function () {
-   
     console.log('触发 onReady事件', this)
+    
   },
   onShow: function() {
      console.log('触发 onShow事件')
