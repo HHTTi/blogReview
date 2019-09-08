@@ -32,8 +32,11 @@ Page({
         authorReply: 'dddddddddddd'
       }
     ],
-    motto: 'Hello World',
     time: (new Date()).toString()
+  },
+  // get 评论列表
+  getBlogReview(){
+
   },
   
   //事件处理函数
@@ -51,21 +54,23 @@ Page({
 
 
   onUnload: function() {
-    console.log('触发 onUnload事件')
+    // console.log('触发 onUnload事件')
     
   },
   onHide: function() {
-    console.log('触发 onHide事件')
+    // console.log('触发 onHide事件')
   },
   onReady: function () {
-    console.log('触发 onReady事件', this)
+    console.log('触发 onReady事件')
     
   },
   onShow: function() {
-     console.log('触发 onShow事件')
+    //  console.log('触发 onShow事件')
   },
   onLoad: function () {
   
-    console.log('触发 onLoad事件');
+    console.log('触发 onLoad事件', app.globalData);
+
+
   }
 })

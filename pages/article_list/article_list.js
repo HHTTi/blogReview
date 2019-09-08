@@ -27,6 +27,16 @@ Page({
       }
     })
   },
+  toBlogReview(e){
+    const { blog_id, title, url }  = e.currentTarget.dataset.item;
+    console.log('toBlogReview', e);
+      app.globalData.blog_id = blog_id
+      app.globalData.title = title
+      app.globalData.blog_url = url 
+    wx.switchTab({
+      url: '../index/index',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

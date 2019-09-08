@@ -3,7 +3,7 @@
   <view class="container">
     <view class="article_list">
       <block wx:for="{{list}}" wx:key ="index" wx:for-item="item" wx:for-index="index">
-        <view class="item">
+        <view class="item" bindtap='toBlogReview'data-item="{{item}}">
           <view class="time">{{item.create_time.getDay()}}</view>
           <view class="article_item">
             <view class="item-img">
@@ -11,7 +11,6 @@
             </view>
             <view class="item-body">
               <view class="item-title">{{item.title}}</view>
-              
             </view>
           </view>
         </view>
