@@ -7,9 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: globalData.title,
+    title: '',
     isDisabled:true,
-    message:''
+    message:'',
+    blog_id: 0
   },
 
   getmessage: function (e) {
@@ -20,6 +21,48 @@ Page({
       message: msg,
       isDisabled
     }) 
+  },
+  // 改变this.data
+  changeData() {
+    const { blog_id, title } = globalData;
+    this.setData({
+      blog_id,
+      title
+    })
+  },
+  // add_user_message
+  postAddUseMessage(){
+    const { blog_id, openid, baseurl,userInfo } = globalData;
+    const { message } = this.data;
+    console.log('add_user_message', message);
+    wx.request({
+      url: baseurl + '/add_user_message',
+      data: {
+        blog_id,
+        openId:openid,
+        user_message:message,
+        user_nickName: userInfo.nickName,
+        user_avatarUrl: userInfo.avatarUrl
+      },
+      method: "POST",
+      success: function (res) {
+        console.log(res.data)
+        if(res.data.code){
+          wx.showToast({
+            title: '留言成功',
+            icon: 'success',
+            duration: 1000,
+            success: wx.navigateBack()
+          });
+        }else {
+          wx.showToast({
+            title: '留言失败,请稍后再试',
+            icon: 'none',
+            duration: 2000,
+          });
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -39,7 +82,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.changeData();
   },
 
   /**

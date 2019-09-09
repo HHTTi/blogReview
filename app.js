@@ -32,6 +32,7 @@ App({
               if(res.data.code){
                 _this.globalData.openid = res.data.msg.openid;
                 _this.globalData.session_key = res.data.msg.openid;
+                _this.globalData.hasInfoData = res.data.msg.hasInfoData;
               }
             }
           })
@@ -49,7 +50,6 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
               this.globalData.hasUserInfo = true
@@ -68,6 +68,23 @@ App({
     })
     
   },
+  // userInfo 
+  getUserInfoData() {
+    const { hasInfoData, userInfo, openid, baseurl } = this.globalData;
+    if (!hasInfoData && userInfo && openid) {
+      wx.request({
+        url: baseurl + '/add_user_info_data',
+        data: {
+          userInfo: userInfo,
+          openid: openid
+        },
+        method: "POST",
+        success: function (res) {
+          console.log(res)
+        }
+      })
+    }
+  },
 
   globalData: {
     blog_id:0,
@@ -78,6 +95,7 @@ App({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     openid:'',
-    seccion_key:''
+    session_key:'',
+    hasInfoData:false
   }
 })

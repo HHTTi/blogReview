@@ -76,3 +76,19 @@
   color: #6E6E6E;
   border-left: 2px solid #1890FF;
 }
+.parised {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.zan {
+  width: 65rpx;
+  height: 37rpx;
+  background-image: url('http://hhtti.cn/mini_programs/image/zan.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.zan.active {
+  background-image: url('http://hhtti.cn/mini_programs/image/zan-active.png');
+}

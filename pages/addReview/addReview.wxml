@@ -4,16 +4,10 @@
       <view class="title">{{title}}</view>
     </view>
     <view class="textarea gray-line-bottom">
-        <textarea 
-          auto-focus="true" 
-          style="height: 8em" 
-          placeholder='留言将由作者筛选后，对所有人可见。'
-          maxlength='500'
-          bindinput='getmessage'
-        />
-      </view>
-      <view class="comment">
-        <button type="primary" disabled="{{isDisabled}}">Comment</button>
-      </view>
+      <textarea auto-focus="true" style="height: 8em" placeholder='留言将由作者筛选后，对所有人可见。' maxlength='500' bindinput='getmessage' />
+    </view>
+    <view class="comment">
+      <button type="primary" bindtap="postAddUseMessage" disabled="{{isDisabled}}">Comment</button>
+    </view>
   </view>
 </view>
