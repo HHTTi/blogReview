@@ -13,7 +13,7 @@ Page({
         nickName: 'ddd',
         user_avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/TA3kAQ9NGHHVIIicmvPRoBvBibLsic0P3KgXpnvdSvTR08cWwlQxawPNib1vpjZ8OJXStdNSG0KDcpGCq2ibGnMaYow/132",
         content: 'ddddddddsdf的风格的风格豆腐干士大夫敢死队风格ddddddddddddsdf的风格的风格豆腐干士大夫敢死队风格ddddddddddddsdf的风格的风格豆腐干士大夫敢死队风格dddd d',
-        isAuthor: false,
+        isParised: false,
         parised: 14,
         createTime: '',
         isTop: true,
@@ -46,20 +46,24 @@ Page({
       }
     })
   },
-  // 点赞
+  // 点赞 或者 取消点赞 
   addParised(e){
     var _this = this;
     const { blog_id, openid, baseurl } = app.globalData;
-    const u_message_id  = e.currentTarget.dataset.id;
-    console.log('u_message_id', u_message_id)
+    console.log(e);
+    return;
+    var { index ,id }  = e.currentTarget.dataset;
+    console.log('u_message_id', id)
     if (!blog_id) return;
     wx.request({
-      url: `${baseurl}/add_u_msg_like?blog_id=${blog_id}&openId=${openid}&u_message_id=${u_message_id}`,
+      url: `${baseurl}/add_u_msg_like?blog_id=${blog_id}&openId=${openid}&u_message_id=${id}`,
 
       method: "GET",
       success: function (res) {
         console.log('点赞res:',res.data)
         if(res.data.code){
+          let reivewList = _this.data.reivewList;
+          reivewList[index].isParised = true;
           
         }
       }
@@ -113,9 +117,9 @@ Page({
     this.changeData();
     this.current_u_msg_like();
   },
-  onLoad: function () {
+  onLoad: function (e) {
   
-    console.log('触发 onLoad事件', app.globalData);
+    console.log(e,'触发 onLoad事件', app.globalData);
 
 
   },

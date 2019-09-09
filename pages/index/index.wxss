@@ -76,6 +76,9 @@
   color: #6E6E6E;
   border-left: 2px solid #1890FF;
 }
+.author-reply {
+  word-break:break-all;
+}
 .parised {
   display: flex;
   justify-content: center;

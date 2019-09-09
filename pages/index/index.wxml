@@ -14,7 +14,7 @@
         <view class="add" bind:tap="addReview">写留言</view>
       </view>
       <view class="reivew-list">
-        <block wx:for-items="{{reivewList}}" wx:key="{{item.id}}">
+        <block wx:for-items="{{reivewList}}" wx:key="{{index}}">
           <view class="item">
             <view class="avatarUrl">
               <image src="{{item.user_avatarUrl}}" />
@@ -25,17 +25,17 @@
                   {{item.user_nickName}}
                   <view wx:if="{{item.isTop}}" class="top">置顶</view>
                 </view>
-                <view class="parised" bindtap="addParised" data-id="{{item.u_message_id}}">
+                <view class="parised" bindtap="addParised" data-index="{{index}}" data-id="{{item.u_message_id}}">
                   <view class="zan"></view>
                   <view>{{item.parised}}</view>
                 </view>
               </view>
               <view class="item-body">
-                <view class="content">{{item.user_message}}</view>
+                <text class="content">{{item.user_message}}</text>
               </view>
               <view wx:if="{{item.author_message}}" class="item-foot">
                 <view class="author">作者</view>
-                <view class="author-reply">{{item.author_message}}</view>
+                <text class="author-reply">{{item.author_message}}</text>
               </view>
             </view>
           </view>
