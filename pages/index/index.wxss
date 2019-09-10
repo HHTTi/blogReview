@@ -87,11 +87,11 @@
 .zan {
   width: 65rpx;
   height: 37rpx;
-  background-image: url('http://hhtti.cn/mini_programs/image/zan.png');
+  background-image: url('https://www.hhtti.cn/mini_programs/image/zan.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 .zan.active {
-  background-image: url('http://hhtti.cn/mini_programs/image/zan-active.png');
+  background-image: url('https://www.hhtti.cn/mini_programs/image/zan-active.png');
 }

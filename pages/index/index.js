@@ -10,16 +10,14 @@ Page({
     reivewList:[
       {
         u_message_id: 0,
-        nickName: 'ddd',
+        user_nickName: 'ddd',
         user_avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/TA3kAQ9NGHHVIIicmvPRoBvBibLsic0P3KgXpnvdSvTR08cWwlQxawPNib1vpjZ8OJXStdNSG0KDcpGCq2ibGnMaYow/132",
-        content: 'ddddddddsdf的风格的风格豆腐干士大夫敢死队风格ddddddddddddsdf的风格的风格豆腐干士大夫敢死队风格ddddddddddddsdf的风格的风格豆腐干士大夫敢死队风格dddd d',
+        content: 'ddd',
         isParised: false,
-        parised: 14,
-        createTime: '',
+        like_number: 14,
         isTop: true,
-        hasAuthorReply: true,
+        is_show:'',
         author_message: 'dddddddddddd',
-        isCurrentUser:false
       }
     ],
     time: (new Date()).toString()
@@ -42,6 +40,9 @@ Page({
         console.log(res.data)
         _this.setData({
           reivewList: res.data.msg
+        },()=>{
+          _this.current_u_msg_like();
+          wx.stopPullDownRefresh()
         })
       }
     })
@@ -51,7 +52,7 @@ Page({
     var _this = this;
     const { blog_id, openid, baseurl } = app.globalData;
     console.log(e);
-    return;
+    // return;
     var { index ,id }  = e.currentTarget.dataset;
     console.log('u_message_id', id)
     if (!blog_id) return;
@@ -63,7 +64,14 @@ Page({
         console.log('点赞res:',res.data)
         if(res.data.code){
           let reivewList = _this.data.reivewList;
-          reivewList[index].isParised = true;
+
+          reivewList[index].isParised ? reivewList[index].like_number -= 1 : reivewList[index].like_number += 1;
+          reivewList[index].isParised = !reivewList[index].isParised;
+
+          console.log(' reivewList[index]',reivewList)
+          _this.setData({
+            reivewList
+          })
           
         }
       }
@@ -79,6 +87,18 @@ Page({
       method: "GET",
       success: function (res) {
         console.log('res:', res.data)
+        let list = _this.data.reivewList,
+            arr = res.data.msg;
+        console.log('list', list)
+        for (let i = 0; i < list.length;i++){
+          arr.forEach(ele => {
+            if(ele.u_message_id === list[i].u_message_id) 
+              list[i].isParised = true ;
+          })
+        }
+        _this.setData({
+          reivewList: list
+        })
       }
     })
 
@@ -113,16 +133,12 @@ Page({
     
   },
   onShow: function() {
-    //  console.log('触发 onShow事件')
+    console.log('触发 onShow事件')
     this.changeData();
-    this.current_u_msg_like();
+    app.getUserInfoData();
+    this.getBlogReview();
   },
-  onLoad: function (e) {
-  
-    console.log(e,'触发 onLoad事件', app.globalData);
 
-
-  },
   // shuaxin
   onPullDownRefresh() {
     this.getBlogReview();

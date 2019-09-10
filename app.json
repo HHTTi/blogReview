@@ -2,7 +2,6 @@
   "pages": [
     "pages/article_list/article_list",
     "pages/index/index",
-    "pages/logs/logs",
     "pages/addReview/addReview",
     "pages/login/login",
     "pages/mine/mine"
