@@ -1,11 +1,21 @@
 <!--pages/article_list/article_list.wxml-->
+
+<wxs module="fliter">
+//<!-- "2019-03-24T10:51:05.000Z" -->
+var fliterTime = function(time){
+  var t = time.substring(0,10);
+  return  t;
+}
+module.exports.fliterTime = fliterTime;
+</wxs>
+
 <view class="root">
   <view class="container">
     <view class="article_list">
       <view wx:if="{{list.length>0}}">
         <block wx:for="{{list}}" wx:key ="index" wx:for-item="item" wx:for-index="index">
           <view class="item" bindtap='toBlogReview'data-item="{{item}}">
-            <view class="time">{{item.create_time.getDay()}}</view>
+            <view class="time">{{fliter.fliterTime(item.create_time)}}</view>
             <view class="article_item">
               <view class="item-img">
                 <image src="{{item.thumb_url}}" mode="widthFix"></image>
@@ -25,3 +35,4 @@
     </view>
   </view>
 </view>
+

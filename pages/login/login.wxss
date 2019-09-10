@@ -1,5 +1,0 @@
-/* pages/login/login.wxss */
-
-.userinfo {
-  padding-top:30%;
-}

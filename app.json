@@ -3,7 +3,6 @@
     "pages/article_list/article_list",
     "pages/index/index",
     "pages/addReview/addReview",
-    "pages/login/login",
     "pages/mine/mine",
     "pages/article_view/article_view"
   ],
@@ -13,25 +12,5 @@
     "navigationBarTitleText": "文章留言",
     "navigationBarTextStyle": "white"
   },
-  "sitemapLocation": "sitemap.json",
-  "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#1890FF",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "iconPath": "image/message.png",
-        "selectedIconPath": "image/message_active.png",
-        "text": "留言"
-      },
-      {
-        "pagePath": "pages/article_list/article_list",
-        "iconPath": "image/a_list.png",
-        "selectedIconPath": "image/a_list_active.png",
-        "text": "文章列表"
-      }
-    ]
-  }
+  "sitemapLocation": "sitemap.json"
 }

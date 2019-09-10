@@ -17,7 +17,7 @@ Page({
       },
       method: 'post', //上传方式
       success: function (res) {
-        // console.log('article_list:', res.data)
+        console.log('article_list:', res.data)
         if(res.data.code){
           _this.setData({
             list:res.data.msg
@@ -32,7 +32,7 @@ Page({
       app.globalData.blog_id = blog_id
       app.globalData.title = title
       app.globalData.blog_url = url 
-    wx.switchTab({
+    wx.navigateTo({
       url: '../index/index',
     })
   },

@@ -6,9 +6,15 @@
   padding: 28rpx;
 
 }
-
+.item {
+  margin-top: 28rpx;
+}
+.time {
+  text-align: center;
+  padding: 10rpx;
+  color: #CBCBCB;
+}
 .article_item {
-  margin-top: 48rpx;
   width: 100%;
   background: #fff;
   border-radius: 5rpx;
@@ -18,7 +24,7 @@
   width: 100%;
 }
 .item-body {
-  padding: 18rpx 28rpx;
+  padding: 28rpx;
 }
 .no-item {
   color: #6E6E6E;
