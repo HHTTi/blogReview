@@ -1,6 +1,8 @@
 /* pages/article_list/article_list.wxss */
 
 .article_list {
+  box-sizing: border-box;
+  width: 100%;
   padding: 28rpx;
 
 }
@@ -17,4 +19,7 @@
 }
 .item-body {
   padding: 18rpx 28rpx;
+}
+.no-item {
+  color: #6E6E6E;
 }

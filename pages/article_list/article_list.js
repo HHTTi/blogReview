@@ -13,8 +13,7 @@ Page({
     wx.request({
       url: app.globalData.baseurl + '/article_list',
       data: {
-        id: 'wwwwwwwwwwww',
-        name:'dddddd'
+        name:'d'
       },
       method: 'post', //上传方式
       success: function (res) {

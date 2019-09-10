@@ -5,20 +5,20 @@ const app = getApp()
 Page({
   data: {
     base_url: app.globalData.baseurl,
-    title: app.globalData.title,
-    blog_url: app.globalData.blog_url,
+    title: '',
+    blog_url: '',
     reivewList:[
-      {
-        u_message_id: 0,
-        user_nickName: 'ddd',
-        user_avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/TA3kAQ9NGHHVIIicmvPRoBvBibLsic0P3KgXpnvdSvTR08cWwlQxawPNib1vpjZ8OJXStdNSG0KDcpGCq2ibGnMaYow/132",
-        content: 'ddd',
-        isParised: false,
-        like_number: 14,
-        isTop: true,
-        is_show:'',
-        author_message: 'dddddddddddd',
-      }
+      // {
+      //   u_message_id: 0,
+      //   user_nickName: 'ddd',
+      //   user_avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/TA3kAQ9NGHHVIIicmvPRoBvBibLsic0P3KgXpnvdSvTR08cWwlQxawPNib1vpjZ8OJXStdNSG0KDcpGCq2ibGnMaYow/132",
+      //   content: 'ddd',
+      //   isParised: false,
+      //   like_number: 14,
+      //   isTop: true,
+      //   is_show:'',
+      //   author_message: 'dddddddddddd',
+      // }
     ],
     time: (new Date()).toString()
   },
@@ -50,9 +50,14 @@ Page({
   // 点赞 或者 取消点赞 
   addParised(e){
     var _this = this;
-    const { blog_id, openid, baseurl } = app.globalData;
-    // console.log(e);
-    // return;
+    const { blog_id, openid, baseurl, userInfo } = app.globalData;
+    if (!userInfo) {
+      
+      wx.navigateTo({
+        url: '../mine/mine'
+      });
+      return;
+    }
     var { index ,id }  = e.currentTarget.dataset;
     // console.log('u_message_id', id)
     if (!blog_id) return;
@@ -104,7 +109,13 @@ Page({
 
   },
   addReview: function(e) {
-    console.log('e',e);
+    const { userInfo } = app.globalData;
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '../mine/mine'
+      });
+      return;
+    }
     wx.navigateTo({
       url: '../addReview/addReview',
     })
@@ -138,7 +149,11 @@ Page({
     app.getUserInfoData();
     this.getBlogReview();
   },
-
+  to_current_article(){
+    wx.navigateTo({
+      url: '../article_view/article_view',
+    })
+  },
   // shuaxin
   onPullDownRefresh() {
     this.getBlogReview();

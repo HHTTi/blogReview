@@ -19,7 +19,7 @@
   align-items: center;
 }
 .review {
-  color: #999;
+  color: #6E6E6E;
 }
 .add {
   color: #1890FF;
@@ -43,8 +43,9 @@
   padding-right: 20rpx;
 }
 .avatarUrl image {
-  width: 100rpx;
-  height: 100rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 4rpx;
 }
 .item-content {
 
@@ -59,6 +60,10 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  color: #6E6E6E;
+}
+.content {
+  color: #212121;
 }
 .top {
   display: block;
@@ -73,16 +78,24 @@
 
 .author {
   padding-left: 10rpx;
+  margin-top: 15rpx;
+  margin-bottom: 5rpx;
   color: #6E6E6E;
-  border-left: 2px solid #1890FF;
+  border-left: 4rpx solid #1890FF;
+  line-height: 1;
 }
 .author-reply {
   word-break:break-all;
 }
+.author , .nickName {
+  font-size: 30rpx;
+}
+
 .parised {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #1890FF;
 }
 .zan {
   width: 65rpx;
@@ -94,4 +107,9 @@
 }
 .zan.active {
   background-image: url('https://www.hhtti.cn/mini_programs/image/zan-active.png');
+}
+
+.no-item {
+  padding-top: 28rpx;
+  color:#CBCBCB;
 }

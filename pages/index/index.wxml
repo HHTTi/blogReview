@@ -1,10 +1,8 @@
 <!-- index.wxml -->
 <view class="root">
   <view class="blog-hd">
-    <view class="blog-title">
-      <navigator to="{{blog_url}}">
+    <view class="blog-title" bind:tap="to_current_article">
         {{title}}
-      </navigator>
     </view>
   </view>
   <view class="blog-bd">
@@ -14,8 +12,8 @@
         <view class="add" bind:tap="addReview">写留言</view>
       </view>
       <view class="reivew-list">
-        <block wx:for-items="{{reivewList}}" wx:key="{{index}}">
-          <view class="item">
+        <block wx:if="{{reivewList.length > 0 }}">
+          <view class="item"  wx:for-items="{{reivewList}}" wx:key="{{index}}">
             <view class="avatarUrl">
               <image src="{{item.user_avatarUrl}}" />
             </view>
@@ -38,6 +36,11 @@
                 <text class="author-reply">{{item.author_message}}</text>
               </view>
             </view>
+          </view>
+        </block>
+        <block wx:else >
+          <view class="no-item">
+            当前文章暂无留言，快来添加第一条留言吧~
           </view>
         </block>
       </view>

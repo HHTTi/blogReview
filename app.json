@@ -4,12 +4,13 @@
     "pages/index/index",
     "pages/addReview/addReview",
     "pages/login/login",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/article_view/article_view"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#f00",
-    "navigationBarTitleText": "Blog Review",
+    "navigationBarTitleText": "文章留言",
     "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json",
@@ -21,21 +22,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "image/home.png",
-        "selectedIconPath": "image/home_active.png",
-        "text": "首页"
+        "iconPath": "image/message.png",
+        "selectedIconPath": "image/message_active.png",
+        "text": "留言"
       },
       {
         "pagePath": "pages/article_list/article_list",
-        "iconPath": "image/list.png",
-        "selectedIconPath": "image/list_active.png",
+        "iconPath": "image/a_list.png",
+        "selectedIconPath": "image/a_list_active.png",
         "text": "文章列表"
-      },
-      {
-        "pagePath": "pages/mine/mine",
-        "iconPath": "image/mine.png",
-        "selectedIconPath": "image/mine_active.png",
-        "text": "我的"
       }
     ]
   }

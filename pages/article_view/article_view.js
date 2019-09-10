@@ -1,4 +1,4 @@
-// pages/mine.js
+// pages/article_view/article_view.js
 const app = getApp();
 Page({
 
@@ -6,33 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: null,
-    hasUserInfo: null,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-  },
-
-  getUserInfo: function (e) {
-    // console.log(e, 'ddddddddddddd',app.globalData)
-    // app.globalData.userInfo = e.detail.userInfo
-    if (e.detail.userInfo){
-      app.globalData.userInfo = e.detail.userInfo;
-      app.globalData.hasUserInfo = true;
-
-      wx.navigateBack({});
-    };
-    
-
+    url:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showToast({
-      title: '需要授权登录才能点赞或留言哦~',
-      icon: 'none',
-      duration: 2000,
-    });
+
   },
 
   /**
@@ -46,7 +27,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      url: app.globalData.blog_url
+    })
   },
 
   /**
