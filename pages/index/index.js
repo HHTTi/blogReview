@@ -37,7 +37,7 @@ Page({
       },
       method: "POST",
       success: function (res) {
-        console.log(res.data)
+        // console.log(res.data)
         _this.setData({
           reivewList: res.data.msg
         },()=>{
@@ -51,24 +51,24 @@ Page({
   addParised(e){
     var _this = this;
     const { blog_id, openid, baseurl } = app.globalData;
-    console.log(e);
+    // console.log(e);
     // return;
     var { index ,id }  = e.currentTarget.dataset;
-    console.log('u_message_id', id)
+    // console.log('u_message_id', id)
     if (!blog_id) return;
     wx.request({
       url: `${baseurl}/add_u_msg_like?blog_id=${blog_id}&openId=${openid}&u_message_id=${id}`,
 
       method: "GET",
       success: function (res) {
-        console.log('点赞res:',res.data)
+        // console.log('点赞res:',res.data)
         if(res.data.code){
           let reivewList = _this.data.reivewList;
 
           reivewList[index].isParised ? reivewList[index].like_number -= 1 : reivewList[index].like_number += 1;
           reivewList[index].isParised = !reivewList[index].isParised;
 
-          console.log(' reivewList[index]',reivewList)
+          // console.log(' reivewList[index]',reivewList)
           _this.setData({
             reivewList
           })
@@ -86,10 +86,10 @@ Page({
 
       method: "GET",
       success: function (res) {
-        console.log('res:', res.data)
+        // console.log('res:', res.data)
         let list = _this.data.reivewList,
             arr = res.data.msg;
-        console.log('list', list)
+        // console.log('list', list)
         for (let i = 0; i < list.length;i++){
           arr.forEach(ele => {
             if(ele.u_message_id === list[i].u_message_id) 
@@ -127,13 +127,13 @@ Page({
     // console.log('触发 onHide事件')
   },
   onReady: function () {
-    console.log('触发 onReady事件',app)
+    // console.log('触发 onReady事件',app)
     app.getUserInfoData();
     this.getBlogReview();
     
   },
   onShow: function() {
-    console.log('触发 onShow事件')
+    // console.log('触发 onShow事件')
     this.changeData();
     app.getUserInfoData();
     this.getBlogReview();

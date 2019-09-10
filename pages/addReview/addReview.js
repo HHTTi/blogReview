@@ -34,7 +34,7 @@ Page({
   postAddUseMessage(){
     const { blog_id, openid, baseurl,userInfo } = globalData;
     const { message } = this.data;
-    console.log('add_user_message', message);
+    // console.log('add_user_message', message);
     wx.request({
       url: baseurl + '/add_user_message',
       data: {
@@ -46,7 +46,7 @@ Page({
       },
       method: "POST",
       success: function (res) {
-        console.log(res.data)
+        // console.log(res.data)
         if(res.data.code){
           wx.showToast({
             title: '留言成功',

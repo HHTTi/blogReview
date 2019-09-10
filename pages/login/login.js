@@ -96,7 +96,7 @@ Page({
 
   },
   getUserInfo: function (e) {
-    console.log(e, 'ddddddddddddd')
+    // console.log(e, 'ddddddddddddd')
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
