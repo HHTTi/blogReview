@@ -1,11 +1,68 @@
 <!--pages/mine.wxml-->
 <view class="container">
   <view class="userinfo">
-    <button type="primary" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权登录 </button>
-    <block wx:else >
+    <!-- <view class="mine-header">
+      <view class="head">
+        <view class="head-img">
+          <view class="img">
+            <image src="../../image/mine-user.png" mode="aspectFit"></image>
+          </view>
+        </view>
+        <view class="nickName">
+          <view>
+            授权登录
+          </view>
+        </view>
+      </view>
+    </view> -->
+    <view class="header">
+      <view class="head-img">
+        <image class="userinfo-avatar {{!!userInfo ? '':'mine-user'}}" src="{{userInfo.avatarUrl || '../../image/mine-user.png'}}" mode="cover"></image>
+      </view>
+      <view class="userinfo-nickname">{{userInfo.nickName || '请登录'}}</view>
+    </view>
+    <view class="mine-messages">
+      <view class="message-head">我的留言</view>
+      <view class="login" wx:if="{{!userInfo && canIUse}}">
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权登录 </button>
+      </view>
+      <view class="list" wx:elif="{{list.length > 0}}">
+        <view class="item  gray-line-bottom" wx:for="{{list}}" wx:key="index" wx:for-item="item" >
+          <view class="item-head gray-line-bottom">
+            <view class="titles">文章标题：<view class="title">{{item.title}}</view></view>
+            <!-- <view class="delete">del</view> -->
+          </view>
+          <view class="item-body" >
+            <view class="texts">留言内容：<view class="text">{{item.user_message}}</view></view>
+            <view class="likes" wx:if="{{item.like_number}}">
+              <image src="../../image/zan-active.png"  /> <view class="like">{{item.like_number}}</view>
+            </view>
+            <view class="replys" wx:if="{{item.author_message}}">作者回复：<view class="reply">{{item.author_message}}</view></view>
+          </view>
+          <view class="delete gray-line-top">
+            <image src="../../image/delete.png" mode="cover" bind:tap="delete_message" data-item="{{item}}" data-id="{{index}}" />
+            删除
+          </view>
+        </view>
+      </view>
+      <view class="list" wx:else >
+        <view class="nomsg">
+          空空如也，快去写留言吧~
+        </view>
+      </view>
+    </view>
+
+    <!-- <block wx:else >
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-    <text />
+    </block> -->
+    <!-- <view class="mine-body">
+      <view class="mine-list">
+        <view  class="mine-nav gray-line-bottom">
+          <view class="mine-nav-text">后台管理</view>
+          <view class="right-arrow"></view>
+        </view>
+      </view>
+    </view> -->
   </view>
 </view>

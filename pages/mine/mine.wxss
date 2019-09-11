@@ -1,20 +1,142 @@
 /* pages/mine.wxss */
 
-
 .userinfo {
-  padding-top:40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
+  padding-top: 28rpx;
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+  width: 160rpx;
+  height: 160rpx;
   border-radius: 50%;
 }
 
 .userinfo-nickname {
   color: #aaa;
+  padding: 28rpx;
+  font-size: 32rpx;
+}
+.header{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  align-items: center;
+  text-align: center;
+}
+
+.head-img {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border: 2rpx solid #fff;
+  background-color: #40A9FF;
+
+}
+
+
+.mine-body {
+  padding-bottom: 28rpx;
+}
+.mine-nav {
+  box-sizing: border-box;
+  padding: 36rpx 28rpx;
+  background-color: #fff;
+}
+.mine-nav-text {
+  color: #212121;
+
+}
+
+
+.nickName {
+  padding-left: 20rpx;
+  color: #fff;
+}
+
+.mine-messages {
+  padding: 28rpx 0;
+  margin-top: 48rpx;
+}
+
+.login {
+  width: 40%;
+  margin: auto;
+  padding-top: 80rpx;
+}
+.login button {
+  background-color: #1890FF;
+  color: #fff;
+}
+
+.mine-user {
+  margin: 26rpx auto;
+  width:100rpx;
+  height: 100rpx;
+}
+
+.message-head {
+  padding: 28rpx;
+  background-color: #fff;
+  color: #212121;
+  font-size: 36rpx;
+  text-align: center;
+}
+.list {
+  padding: 28rpx 0;
+  color: #6E6E6E
+}
+
+.item {
+  margin-bottom: 28rpx;
+  padding: 28rpx;
+  background-color: #fff;
+}
+.item-head {
+  padding-bottom: 28rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.item-body {
+  padding-bottom: 28rpx;
+
+}
+.title {
+  color: #1890FF;
+}
+
+.titles ,.texts, .likes ,.replys {
+  padding-top: 28rpx;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  color: #6E6E6E;
+}
+.likes {
+  justify-content: flex-end;
+}
+.likes image {
+  width: 65rpx;
+  height: 37rpx;
+
+}
+.text, .like ,.reply {
+  color:#212121;
+}
+
+.delete {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 18rpx;
+}
+.delete image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.nomsg {
+  padding-top: 48rpx;
+  text-align: center;
+
 }

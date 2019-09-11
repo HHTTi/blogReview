@@ -7,19 +7,7 @@ Page({
     base_url: app.globalData.baseurl,
     title: '',
     blog_url: '',
-    reivewList:[
-      // {
-      //   u_message_id: 0,
-      //   user_nickName: 'ddd',
-      //   user_avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/TA3kAQ9NGHHVIIicmvPRoBvBibLsic0P3KgXpnvdSvTR08cWwlQxawPNib1vpjZ8OJXStdNSG0KDcpGCq2ibGnMaYow/132",
-      //   content: 'ddd',
-      //   isParised: false,
-      //   like_number: 14,
-      //   isTop: true,
-      //   is_show:'',
-      //   author_message: 'dddddddddddd',
-      // }
-    ],
+    reivewList:[ ],
     time: (new Date()).toString()
   },
 
@@ -28,7 +16,10 @@ Page({
   getBlogReview(){
     var _this = this;
     const { blog_id, openid, baseurl } = app.globalData;
-    if (!blog_id) return;
+    if (!blog_id) {
+      
+      return;
+    };
     wx.request({
       url: baseurl + '/article_user_message',
       data: {
@@ -53,7 +44,7 @@ Page({
     const { blog_id, openid, baseurl, userInfo } = app.globalData;
     if (!userInfo) {
       
-      wx.navigateTo({
+      wx.switchTab({
         url: '../mine/mine'
       });
       return;
@@ -123,6 +114,18 @@ Page({
   // 改变this.data
   changeData(){
     const { blog_id, blog_url, title } = app.globalData;
+    if(!blog_id) {
+      wx.switchTab({
+        url: '../article_list/article_list',
+        success:()=>{ 
+          wx.showToast({
+            title: '当前暂未选择文章，去文章列表看看吧~',
+            icon: 'none',
+            duration: 2000,
+          })
+        }
+      });
+    }
     this.setData({
       blog_id,
       blog_url,
