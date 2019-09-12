@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/mine/mine",
     "pages/addReview/addReview",
-    "pages/article_view/article_view"
+    "pages/article_view/article_view",
+    "pages/admin/admin"
   ],
   "window": {
     "backgroundTextStyle": "dark",

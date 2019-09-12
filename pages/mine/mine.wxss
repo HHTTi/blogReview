@@ -55,7 +55,7 @@
 }
 
 .mine-messages {
-  padding: 28rpx 0;
+  padding: 28rpx;
   margin-top: 48rpx;
 }
 
@@ -127,7 +127,7 @@
 
 .delete {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding-top: 18rpx;
 }
 .delete image {

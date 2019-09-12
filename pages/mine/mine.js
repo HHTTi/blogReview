@@ -74,7 +74,7 @@ Page({
             success:(res)=> {
               console.log('delete_message',res.data)
               if (res.data.code){
-                let list = _this.data, index = e.currentTarget.dataset.id
+                let list = _this.data.list, index = e.currentTarget.dataset.id
                 
                 list.splice(index,1);
                 console.log(list)
@@ -90,6 +90,30 @@ Page({
 
     })
   },  
+  toAdmin(){
+    const { baseurl, openid, userInfo } = app.globalData;
+    if(!openid || !userInfo) return;
+    wx.showActionSheet({
+      itemList:['登录后台'],
+      success (res) {
+        console.log(res.tapIndex);
+        if(res.tapIndex === 0) {
+          wx.request({
+            url: `${baseurl}/is_admin?openId=${openid}`,
+            method:'GET',
+            success: res => {
+              console.log('is_admin',res.data);
+              if(res.data.code){
+                wx.navigateTo({
+                  url: '../admin/admin',
+                })
+              }
+            }
+          })
+        }
+      },
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

@@ -16,7 +16,7 @@
       </view>
     </view> -->
     <view class="header">
-      <view class="head-img">
+      <view class="head-img" bind:tap="toAdmin" >
         <image class="userinfo-avatar {{!!userInfo ? '':'mine-user'}}" src="{{userInfo.avatarUrl || '../../image/mine-user.png'}}" mode="cover"></image>
       </view>
       <view class="userinfo-nickname">{{userInfo.nickName || '请登录'}}</view>
@@ -39,8 +39,8 @@
             </view>
             <view class="replys" wx:if="{{item.author_message}}">作者回复：<view class="reply">{{item.author_message}}</view></view>
           </view>
-          <view class="delete gray-line-top">
-            <image src="../../image/delete.png" mode="cover" bind:tap="delete_message" data-item="{{item}}" data-id="{{index}}" />
+          <view class="delete gray-line-top"  bind:tap="delete_message" data-item="{{item}}" data-id="{{index}}">
+            <image src="../../image/delete.png" mode="cover" />
             删除
           </view>
         </view>

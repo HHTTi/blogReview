@@ -102,7 +102,7 @@ Page({
   addReview: function(e) {
     const { userInfo } = app.globalData;
     if (!userInfo) {
-      wx.navigateTo({
+      wx.switchTab({
         url: '../mine/mine'
       });
       return;
