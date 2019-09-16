@@ -152,6 +152,12 @@ Page({
     app.getUserInfoData();
     this.getBlogReview();
   },
+  /**
+ * 用户点击右上角分享
+ */
+  onShareAppMessage: function () {
+
+  },
   to_current_article(){
     wx.navigateTo({
       url: '../article_view/article_view',

@@ -17,10 +17,12 @@ Page({
       },
       method: 'post', //上传方式
       success: function (res) {
-        console.log('article_list:', res.data)
+        // console.log('article_list:', res.data)
         if(res.data.code){
           _this.setData({
             list:res.data.msg
+          },()=>{
+            wx.stopPullDownRefresh();
           })
         }
       }
@@ -55,7 +57,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('app.globaldata',app.globalData)
+    // console.log('app.globaldata',app.globalData)
   },
 
   /**
@@ -91,5 +93,8 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  onPullDownRefresh() {
+    this.getArticleList();
+  } 
 })

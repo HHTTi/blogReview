@@ -1,17 +1,20 @@
 {
   "pages": [
+    "pages/admin/admin",
     "pages/article_list/article_list",
     "pages/index/index",
     "pages/mine/mine",
     "pages/addReview/addReview",
-    "pages/article_view/article_view",
-    "pages/admin/admin"
+    "pages/article_view/article_view"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#1890FF",
     "navigationBarTitleText": "文章留言",
     "navigationBarTextStyle": "white"
+  },
+  "networkTimeout": {
+    "request": 3000
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {

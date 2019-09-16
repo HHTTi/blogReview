@@ -1,2 +1,80 @@
 <!--pages/admin/admin.wxml-->
-<text>pages/admin/admin.wxml</text>
+<view class="root">
+    <view class="container">
+        <!-- <block wx:if="{{!token}}">
+            <view class="login">
+                <view class="login_head">
+                    <image class="head_img" src="../../image/head.jpg" />
+                </view>
+                <view class="login_body">
+                    <form catchsubmit="postLogin" >
+                        <view class="login_input gray-line-bottom">
+                            <input class="" maxlength="18" name="name" auto-focus placeholder="管理员账号"/>
+                        </view>
+                        <view class="login_input gray-line-bottom">
+                            <input class="" maxlength="18" name="pass" password type="text" placeholder="管理员密码" />
+                        </view>
+                        <view class="login_btn">
+                            <button formType="submit">登 录</button>
+                        </view>
+                    </form>
+                </view>
+                <view class="login_foot">
+
+                </view>
+            </view>
+        </block> -->
+        <block  >
+            <view class="admin">
+                <view class="list" wx:if="{{list.length > 0}}">
+                  <view class="item  gray-line-bottom" wx:for="{{list}}" wx:key="index" wx:for-item="item" >
+                    <view class="item-head gray-line-bottom">
+                      <view class="titles">文章：<view class="title">{{item.title}}</view></view>
+                      <!-- <view class="delete">del</view> -->
+                    </view>
+                    <view class="item-body" >
+                      <view class="texts">留言：<view class="text">{{item.user_message}}</view></view>
+                      <view class="likes" wx:if="{{item.like_number}}">
+                        <image src="../../image/zan-active.png"  /> <view class="like">{{item.like_number}}</view>
+                      </view>
+                      <view class="replys" wx:if="{{item.author_message}}">回复：<view class="reply">{{item.author_message}}</view></view>
+                    </view>
+                    <view class="item-foot delete gray-line-top"  bind:tap="change_message" data-item="{{item}}" data-index="{{index}}">
+                      <view class="item-icon">
+                          <view class="item-icon-box" id="delete"></view>
+                        <image src="../../image/delete.png" mode="cover" />
+                        <text decode="{{true}}" space="{{true}}">&nbsp;删除</text>
+                      </view>
+                      <view class="item-icon">
+                          <view class="item-icon-box" id="toTop"></view>
+                          <image src="../../image/vertical-align-top.png" mode="cover" /> 
+                          <text decode="{{true}}" space="{{true}}">&nbsp;置顶</text>
+                      </view>
+                      <view class="item-icon" >
+                          <view class="item-icon-box" id="reply"></view>
+                        <image src="../../image/edit-square.png" mode="cover" /> 
+                        <text decode="{{true}}" space="{{true}}">&nbsp;回复</text>
+                      </view>
+                      <view wx:if="{{!item.author_message}}" class="author_reply {{index === inputShow ? 'show-input':''}}">
+                        <!-- <form class="reply-form" catchsubmit="sendReply" > -->
+                        <view class="reply-input">
+                            <input class="" bindinput="replyValue" name="reply" auto-focus placeholder="回复"/>
+                        </view>
+                        <view class="reply-btns" catch:tap="reply" >
+                            <button size="mini" id="send" >发送</button>
+                            <button size="mini" id="cancel">取消</button>
+                        </view>
+                        <!-- </form> -->
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="list" wx:else >
+                  <view class="nomsg">
+                    这里空空如也 ~
+                  </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

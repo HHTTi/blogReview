@@ -2,11 +2,12 @@
 App({
 
   onLaunch: function (options) {
-    // console.log(this,'app')
+    console.log(options,'app')
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs);
+    var storageOpenId = wx.getStorageSync('openid') || [];
+    var storageUserInfo = wx.getStorageSync('userInfo') || [];
+
+    // wx.setStorageSync('logs', logs);
 
     wx.getSystemInfo({
       success(res) {
@@ -97,5 +98,8 @@ App({
     openid:'',
     session_key:'',
     hasInfoData:false
+  },
+  delete_message(){
+    
   }
 })
