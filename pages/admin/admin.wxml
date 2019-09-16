@@ -1,7 +1,7 @@
 <!--pages/admin/admin.wxml-->
 <view class="root">
     <view class="container">
-        <!-- <block wx:if="{{!token}}">
+        <block wx:if="{{!token}}">
             <view class="login">
                 <view class="login_head">
                     <image class="head_img" src="../../image/head.jpg" />
@@ -23,14 +23,14 @@
 
                 </view>
             </view>
-        </block> -->
-        <block  >
+        </block>
+        <block wx:else >
             <view class="admin">
                 <view class="list" wx:if="{{list.length > 0}}">
                   <view class="item  gray-line-bottom" wx:for="{{list}}" wx:key="index" wx:for-item="item" >
                     <view class="item-head gray-line-bottom">
                       <view class="titles">文章：<view class="title">{{item.title}}</view></view>
-                      <!-- <view class="delete">del</view> -->
+                      <view wx:if="{{item.is_top}}" class="top">已置顶</view>
                     </view>
                     <view class="item-body" >
                       <view class="texts">留言：<view class="text">{{item.user_message}}</view></view>
@@ -58,11 +58,11 @@
                       <view wx:if="{{!item.author_message}}" class="author_reply {{index === inputShow ? 'show-input':''}}">
                         <!-- <form class="reply-form" catchsubmit="sendReply" > -->
                         <view class="reply-input">
-                            <input class="" bindinput="replyValue" name="reply" auto-focus placeholder="回复"/>
+                            <input class="" bindinput="replyValue" name="reply" auto-focus placeholder="回复："/>
                         </view>
                         <view class="reply-btns" catch:tap="reply" >
-                            <button size="mini" id="send" >发送</button>
-                            <button size="mini" id="cancel">取消</button>
+                            <button id="send" >发送</button>
+                            <button id="cancel">取消</button>
                         </view>
                         <!-- </form> -->
                       </view>

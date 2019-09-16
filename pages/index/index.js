@@ -28,9 +28,14 @@ Page({
       },
       method: "POST",
       success: function (res) {
-        // console.log(res.data)
+        
+        var reivewList = res.data.msg
+        reivewList.sort((a,b)=>{
+          return Number(b.is_top) - Number(a.is_top)
+        })
+        console.log(reivewList)
         _this.setData({
-          reivewList: res.data.msg
+          reivewList
         },()=>{
           _this.current_u_msg_like();
           wx.stopPullDownRefresh()
@@ -143,7 +148,6 @@ Page({
   onReady: function () {
     // console.log('触发 onReady事件',app)
     app.getUserInfoData();
-    this.getBlogReview();
     
   },
   onShow: function() {

@@ -21,7 +21,7 @@
               <view class="item-head">
                 <view class="nickName">
                   {{item.user_nickName}}
-                  <view wx:if="{{item.isTop}}" class="top">置顶</view>
+                  <view wx:if="{{item.is_top}}" class="top">置顶</view>
                 </view>
                 <view class="parised" bindtap="addParised" data-index="{{index}}" data-id="{{item.u_message_id}}">
                   <view class="zan {{item.isParised ? 'active':''}}"></view>

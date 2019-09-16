@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/admin/admin",
     "pages/article_list/article_list",
     "pages/index/index",
     "pages/mine/mine",
+    "pages/admin/admin",
     "pages/addReview/addReview",
     "pages/article_view/article_view"
   ],

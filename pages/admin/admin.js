@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    token:'simple_token',
+    token:'',
     page:1,
     size:10,
     list:[], //留言列表
@@ -18,17 +18,27 @@ Page({
   postLogin: function (e) {
     const { baseurl } = app.globalData;
     var _this = this;
-    console.log('form submit：', e.detail.value)
+    var value = e.detail.value;
+    // console.log('form submit：', e.detail.value);
+    if(!value.name || !value.pass) return;
     wx.request({
       url: baseurl+'/admin_login',
-      data: e.detail.value,
+      data:  value,
       method:'POST',
       success:(res)=>{
         console.log(res.data)
-        _this.setData({token:res.data.msg.token},()=>{
-          // _this.admin_all_message()
-        });
-
+        const { code, msg } = res.data;
+        if (code){
+          _this.setData({token:msg.token},()=>{
+            _this.admin_all_message()
+          });
+        }else{
+          wx.showToast({
+            title: '账号或者密码错误',
+            icon: 'none',
+            duration: 1500,
+          })
+        }
       }
 
     })
@@ -46,8 +56,8 @@ Page({
         console.log(res.data);
         var { code, msg } = res.data;
         if(code){
-          _this.setData({
-            list:msg
+          _this.setData({ list: msg }, () => {
+            wx.stopPullDownRefresh();
           })
         }
       }
@@ -64,11 +74,18 @@ Page({
 
     const { baseurl } = app.globalData;
     const { token } = this.data;
-
+    if (!token || !blog_id || !u_message_id) {
+      wx.showToast({
+        title: '请求错误，刷新试试',
+        icon: 'none',
+        duration: 1500,
+      })
+      return;
+    };
     if (val === 'delete') {
       this.delete_message(token, baseurl, blog_id, u_message_id, index);
     }else if(val === 'toTop'){
-      this.to_top();
+      this.to_top(token, baseurl, blog_id, u_message_id, index);
     }else if( val === 'reply'){
       author_message 
       ? wx.showToast({
@@ -161,8 +178,30 @@ Page({
     
   },
   // 置顶
-  to_top(){
-    
+  to_top(token, baseurl, blog_id, u_message_id, index){
+    var _this = this;
+    wx.request({
+      url: `${baseurl}/admin_to_top_message?token=${token}&blog_id=${blog_id}&u_message_id=${u_message_id}`,
+      success: res =>{
+        console.log(res)
+        var {code,msg} = res.data;
+        if(code) {
+          let text = '';
+          msg.isTop ?
+            text = '置顶成功'
+            :text = '取消置顶';
+
+            wx.showToast({
+              title: text,
+              duration: 1500,
+            });
+          let list = _this.data.list;
+
+          list[index].is_top = msg.isTop;
+          _this.setData({list});
+        }
+      }
+    })
   },
 
   /**
@@ -219,5 +258,8 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  onPullDownRefresh() {
+    this.admin_all_message();
+  } 
 })

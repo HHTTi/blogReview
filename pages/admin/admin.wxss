@@ -59,7 +59,7 @@
     color: #1890FF;
   }
   
-  .titles ,.texts, .likes ,.replys {
+  .titles ,.texts, .likes ,.replys, .top {
     padding-top: 28rpx;
     display: flex;
     flex-flow: row wrap;
@@ -106,7 +106,6 @@
   }
 
   .author_reply {
-      display: block;
       position: absolute;
       bottom: 0;
       z-index: 3;
@@ -130,6 +129,14 @@
   .reply-btns {
     display: flex;
     align-items: center;
+    height: 100%;
+
+  }
+  .reply-btns button {
+    max-height: 100%;
+    display: inline-block;
+    line-height: 2.3;
+    font-size: 13px;
 
   }
   .reply-input {
