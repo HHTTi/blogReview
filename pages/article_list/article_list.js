@@ -34,7 +34,7 @@ Page({
       app.globalData.blog_id = blog_id
       app.globalData.title = title
       app.globalData.blog_url = url 
-    wx.navigateTo({
+    wx.switchTab({
       url: '../index/index',
     })
   },

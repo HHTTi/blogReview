@@ -139,7 +139,30 @@ Page({
       title
     })
   },
+  // 当前文章
+  getArticle() {
+    const { blog_id, baseurl, title } = app.globalData;
+    if (title || !blog_id) return;
+    var _this = this;
+    wx.request({
+      url: baseurl + '/article_item?blog_id=' + blog_id,
+      method: 'GET',
+      success: function (res) {
+        console.log('article_item:', res.data)
+        var { code, msg } = res.data
+        if (code) {
+          _this.setData({
+            blog_id,
+            blog_url: msg.url,
+            title: msg.title
+          })
+          app.globalData.title = msg.title;
+          app.globalData.blog_url = msg.url;
 
+        }
+      }
+    })
+  },
   onUnload: function() {
     // console.log('触发 onUnload事件')
     
@@ -149,8 +172,7 @@ Page({
   },
   onReady: function () {
     // console.log('触发 onReady事件',app)
-    app.getUserInfoData();
-    
+    this.getArticle();
   },
   onShow: function() {
     // console.log('触发 onShow事件')

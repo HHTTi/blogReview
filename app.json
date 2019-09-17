@@ -24,6 +24,12 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/edit-square.png",
+        "selectedIconPath": "image/ff4b1f_edit.png",
+        "text": "留言"
+      },
+      {
         "pagePath": "pages/article_list/article_list",
         "iconPath": "image/a_list.png",
         "selectedIconPath": "image/ff4b1f_list.png",

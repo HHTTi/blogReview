@@ -14,9 +14,9 @@ App({
         console.log(' wx.getSystemInfo',res)
       }
     });
-    if(options.scene == '1058'){
-      const { id } =options.query;
-      id ? this.globalData.blog_id = id :''
+    const { id } =options.query;
+    if(id) {
+      this.globalData.blog_id = id
     }
     // 登录
     wx.login({
@@ -110,7 +110,5 @@ App({
     session_key:'',
     hasInfoData:false
   },
-  delete_message(){
-    
-  }
+
 })
