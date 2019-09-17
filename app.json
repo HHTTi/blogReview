@@ -9,7 +9,7 @@
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#1890FF",
+    "navigationBarBackgroundColor": "#ff4b1f",
     "navigationBarTitleText": "文章留言",
     "navigationBarTextStyle": "white"
   },
@@ -19,20 +19,20 @@
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#7A7E83",
-    "selectedColor": "#1890FF",
+    "selectedColor": "#ff4b1f",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/article_list/article_list",
         "iconPath": "image/a_list.png",
-        "selectedIconPath": "image/a_list_active.png",
+        "selectedIconPath": "image/ff4b1f_list.png",
         "text": "文章列表"
       },
       {
         "pagePath": "pages/mine/mine",
         "iconPath": "image/user.png",
-        "selectedIconPath": "image/user_active.png",
+        "selectedIconPath": "image/ff4b1f_user.png",
         "text": "我的"
       }
     ]

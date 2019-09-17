@@ -11,9 +11,13 @@ App({
 
     wx.getSystemInfo({
       success(res) {
-        // console.log(' wx.getSystemInfo',res)
+        console.log(' wx.getSystemInfo',res)
       }
     });
+    if(options.scene == '1058'){
+      const { id } =options.query;
+      id ? this.globalData.blog_id = id :''
+    }
     // 登录
     wx.login({
       success: res => {
@@ -22,6 +26,10 @@ App({
         let _this = this;
         if (res.code) {
           //发起网络请求
+          wx.showLoading({
+            title: '加载中',
+            mask:true,
+          })
           wx.request({
             url: this.globalData.baseurl+'/user_openId',
             data: {
@@ -35,6 +43,9 @@ App({
                 _this.globalData.session_key = res.data.msg.openid;
                 _this.globalData.hasInfoData = res.data.msg.hasInfoData;
               }
+            },
+            complete:() => {
+              wx.hideLoading();
             }
           })
         } else {

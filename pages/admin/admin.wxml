@@ -35,7 +35,7 @@
                     <view class="item-body" >
                       <view class="texts">留言：<view class="text">{{item.user_message}}</view></view>
                       <view class="likes" wx:if="{{item.like_number}}">
-                        <image src="../../image/zan-active.png"  /> <view class="like">{{item.like_number}}</view>
+                        <image src="../../image/like.png"  /> <view class="like">{{item.like_number}}</view>
                       </view>
                       <view class="replys" wx:if="{{item.author_message}}">回复：<view class="reply">{{item.author_message}}</view></view>
                     </view>
@@ -58,7 +58,7 @@
                       <view wx:if="{{!item.author_message}}" class="author_reply {{index === inputShow ? 'show-input':''}}">
                         <!-- <form class="reply-form" catchsubmit="sendReply" > -->
                         <view class="reply-input">
-                            <input class="" bindinput="replyValue" name="reply" auto-focus placeholder="回复："/>
+                            <input class="" bindinput="replyValue" name="reply" placeholder="回复："/>
                         </view>
                         <view class="reply-btns" catch:tap="reply" >
                             <button id="send" >发送</button>

@@ -24,8 +24,8 @@
                   <view wx:if="{{item.is_top}}" class="top">置顶</view>
                 </view>
                 <view class="parised" bindtap="addParised" data-index="{{index}}" data-id="{{item.u_message_id}}">
-                  <view class="zan {{item.isParised ? 'active':''}}"></view>
-                  <view>{{item.like_number || ''}}</view>
+                  <view class="like {{item.isParised ? 'active':''}}"></view>
+                  <view class="like_number">{{item.like_number || ''}}</view>
                 </view>
               </view>
               <view class="item-body">

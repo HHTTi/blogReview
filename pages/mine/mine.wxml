@@ -35,7 +35,7 @@
           <view class="item-body" >
             <view class="texts">留言内容：<view class="text">{{item.user_message}}</view></view>
             <view class="likes" wx:if="{{item.like_number}}">
-              <image src="../../image/zan-active.png"  /> <view class="like">{{item.like_number}}</view>
+              <image src="../../image/like.png"  /><view class="like">{{item.like_number}}</view>
             </view>
             <view class="replys" wx:if="{{item.author_message}}">作者回复：<view class="reply">{{item.author_message}}</view></view>
           </view>

@@ -88,18 +88,20 @@ Page({
       method: "GET",
       success: function (res) {
         // console.log('res:', res.data)
-        let list = _this.data.reivewList,
-            arr = res.data.msg;
-        // console.log('list', list)
-        for (let i = 0; i < list.length;i++){
-          arr.forEach(ele => {
-            if(ele.u_message_id === list[i].u_message_id) 
-              list[i].isParised = true ;
+        if(res.data.code){
+          let list = _this.data.reivewList,
+              arr = res.data.msg;
+          // console.log('list', list)
+          for (let i = 0; i < list.length;i++){
+            arr.forEach(ele => {
+              if(ele.u_message_id === list[i].u_message_id) 
+                list[i].isParised = true ;
+            })
+          }
+          _this.setData({
+            reivewList: list
           })
         }
-        _this.setData({
-          reivewList: list
-        })
       }
     })
 

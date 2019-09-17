@@ -26,7 +26,7 @@ Page({
       data:  value,
       method:'POST',
       success:(res)=>{
-        console.log(res.data)
+        // console.log(res.data)
         const { code, msg } = res.data;
         if (code){
           _this.setData({token:msg.token},()=>{
@@ -53,7 +53,7 @@ Page({
       url: `${baseurl}/admin_all_message?token=${token}&page=${page}&size=${size}`,
       method:'GET',
       success: (res) => {
-        console.log(res.data);
+        // console.log(res.data);
         var { code, msg } = res.data;
         if(code){
           _this.setData({ list: msg }, () => {
@@ -183,7 +183,7 @@ Page({
     wx.request({
       url: `${baseurl}/admin_to_top_message?token=${token}&blog_id=${blog_id}&u_message_id=${u_message_id}`,
       success: res =>{
-        console.log(res)
+        // console.log(res)
         var {code,msg} = res.data;
         if(code) {
           let text = '';
@@ -208,7 +208,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.admin_all_message()
   },
 
   /**

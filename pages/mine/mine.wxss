@@ -65,7 +65,7 @@
   padding-top: 80rpx;
 }
 .login button {
-  background-color: #1890FF;
+  background-color: #ff4b1f;
   color: #fff;
 }
 
@@ -103,7 +103,7 @@
 
 }
 .title {
-  color: #1890FF;
+  color: #ff4b1f;
 }
 
 .titles ,.texts, .likes ,.replys {
@@ -117,8 +117,9 @@
   justify-content: flex-end;
 }
 .likes image {
-  width: 65rpx;
-  height: 37rpx;
+  margin-right: 6rpx;
+  width: 40rpx;
+  height: 40rpx;
 
 }
 .text, .like ,.reply {
