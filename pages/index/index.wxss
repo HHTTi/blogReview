@@ -81,7 +81,7 @@
   margin-top: 15rpx;
   margin-bottom: 5rpx;
   color: #6E6E6E;
-  border-left: 4rpx solid #ff4b1f;
+  border-left: 6rpx solid #ff4b1f;
   line-height: 1;
 }
 .author-reply {

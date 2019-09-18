@@ -33,7 +33,7 @@ Page({
         reivewList.sort((a,b)=>{
           return Number(b.is_top) - Number(a.is_top)
         })
-        console.log(reivewList)
+        // console.log(reivewList)
         _this.setData({
           reivewList
         },()=>{

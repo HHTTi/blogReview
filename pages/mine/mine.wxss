@@ -29,8 +29,8 @@
   width: 160rpx;
   height: 160rpx;
   border-radius: 50%;
-  border: 2rpx solid #fff;
-  background-color: #40A9FF;
+  /* border: 2rpx solid #fff; */
+  background-color: #ff4b1f;
 
 }
 

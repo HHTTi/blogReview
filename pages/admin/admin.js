@@ -66,7 +66,7 @@ Page({
 
   // 处理留言
   change_message(e){
-    console.log(e);
+    // console.log(e);
     var val = e.target.id; //delete,toTop,reply
 
     const { item, index } = e.currentTarget.dataset
