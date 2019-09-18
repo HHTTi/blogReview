@@ -7,7 +7,7 @@
       <textarea auto-focus="true" style="height: 8em" placeholder='留言将由作者筛选后，对所有人可见。' maxlength='500' bindinput='getmessage' />
     </view>
     <view class="comment">
-      <button type="primary" bindtap="postAddUseMessage" disabled="{{isDisabled}}">Comment</button>
+      <button bindtap="postAddUseMessage" disabled="{{isDisabled}}">Comment</button>
     </view>
   </view>
 </view>

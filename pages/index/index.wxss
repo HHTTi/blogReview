@@ -75,11 +75,13 @@
   color:#fff;
 
 }
-
+.item-foot {
+  padding: 10rpx 0;
+}
 .author {
   padding-left: 10rpx;
   margin-top: 15rpx;
-  margin-bottom: 5rpx;
+  margin-bottom: 15rpx;
   color: #6E6E6E;
   border-left: 6rpx solid #ff4b1f;
   line-height: 1;
