@@ -92,7 +92,7 @@ App({
         },
         method: "POST",
         success: function (res) {
-          // console.log(res)
+          console.log('add_user_info_data',res.data)
         }
       })
     }

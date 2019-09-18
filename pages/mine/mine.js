@@ -15,13 +15,10 @@ Page({
     var userInfo = e.detail.userInfo;
     if (userInfo){
       app.globalData.userInfo = userInfo;
-      app.globalData.hasUserInfo = true;
       this.setData({
         userInfo
       })
-      // wx.switchTab({
-      //   url: '../index/index',
-      // });
+      app.getUserInfoData();
       this.getCurrentUserMessageAll();
     };
     
