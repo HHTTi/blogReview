@@ -8,7 +8,8 @@ Page({
     title: '',
     blog_url: '',
     reivewList:[ ],
-    time: (new Date()).toString()
+    time: (new Date()).toString(),
+    likes_success:false
   },
 
 
@@ -54,9 +55,9 @@ Page({
       });
       return;
     }
+    if (!this.data.likes_success || !blog_id ) return;
     var { index ,id }  = e.currentTarget.dataset;
     // console.log('u_message_id', id)
-    if (!blog_id) return;
     wx.request({
       url: `${baseurl}/add_u_msg_like?blog_id=${blog_id}&openId=${openid}&u_message_id=${id}`,
 
@@ -99,7 +100,8 @@ Page({
             })
           }
           _this.setData({
-            reivewList: list
+            reivewList: list,
+            likes_success:true
           })
         }
       }
