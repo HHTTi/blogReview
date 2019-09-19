@@ -7,7 +7,7 @@ Page({
     base_url: app.globalData.baseurl,
     title: '',
     blog_url: '',
-    reivewList:[ ],
+    reivewList:[],
     time: (new Date()).toString(),
     likes_success:false,
     canAddReview:false
@@ -23,25 +23,44 @@ Page({
       return;
     };
     wx.request({
-      url: baseurl + '/article_user_message',
+      url: baseurl + '/article_user_message_and_likes',
       data: {
         blog_id,
         openId: openid
       },
       method: "POST",
       success: function (res) {
-        
-        var reivewList = res.data.msg
-        reivewList.sort((a,b)=>{
-          return Number(b.is_top) - Number(a.is_top)
-        })
-        // console.log(reivewList)
-        _this.setData({
-          reivewList
-        },()=>{
-          _this.current_u_msg_like();
-          wx.stopPullDownRefresh()
-        })
+        if(res.data.code){
+          var reivewList = res.data.msg
+          console.log(reivewList)
+          reivewList.sort((a,b)=>{
+            return Number(b.is_top) - Number(a.is_top)
+          })
+          //
+          _this.setData({
+            reivewList
+          },()=>{
+            wx.stopPullDownRefresh()
+          })
+        }
+      }
+    })
+  },
+  test() {
+    var _this = this;
+    const { blog_id, openid, baseurl } = app.globalData;
+    if (!blog_id) {
+      return;
+    };
+    wx.request({
+      url: baseurl + '/article_user_message_and_likes',
+      data: {
+        blog_id,
+        openId: openid
+      },
+      method: "POST",
+      success: function (res) {
+        console.log('article_user_message_and_likes',res.data)
       }
     })
   },
@@ -89,7 +108,7 @@ Page({
 
       method: "GET",
       success: function (res) {
-        // console.log('res:', res.data)
+        console.log('res:', res.data)
         if(res.data.code){
           let list = _this.data.reivewList,
               arr = res.data.msg;
@@ -109,6 +128,7 @@ Page({
     })
 
   },
+  
   addReview: function(e) {
     const { userInfo, canAddReview } = app.globalData;
     if (!userInfo) {
