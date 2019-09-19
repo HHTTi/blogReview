@@ -9,7 +9,8 @@ Page({
     blog_url: '',
     reivewList:[ ],
     time: (new Date()).toString(),
-    likes_success:false
+    likes_success:false,
+    canAddReview:false
   },
 
 
@@ -109,20 +110,21 @@ Page({
 
   },
   addReview: function(e) {
-    const { userInfo } = app.globalData;
+    const { userInfo, canAddReview } = app.globalData;
     if (!userInfo) {
       wx.switchTab({
         url: '../mine/mine'
       });
       return;
     }
+    if (!canAddReview) return;
     wx.navigateTo({
       url: '../addReview/addReview',
     })
   },
   // 改变this.data
   changeData(){
-    const { blog_id, blog_url, title } = app.globalData;
+    const { blog_id, blog_url, title, canAddReview } = app.globalData;
     if(!blog_id) {
       wx.switchTab({
         url: '../article_list/article_list',
@@ -138,7 +140,8 @@ Page({
     this.setData({
       blog_id,
       blog_url,
-      title
+      title,
+      canAddReview
     })
   },
   // 当前文章

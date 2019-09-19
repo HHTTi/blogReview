@@ -39,9 +39,10 @@ App({
             success: function (res) {
               // console.log(res.data,'resss')
               if(res.data.code){
-                _this.globalData.openid = res.data.msg.openid;
-                _this.globalData.session_key = res.data.msg.openid;
-                _this.globalData.hasInfoData = res.data.msg.hasInfoData;
+                var { openid, hasInfoData, canAddReview } = res.data.msg;
+                _this.globalData.openid = openid;
+                _this.globalData.hasInfoData =  hasInfoData;
+                _this.globalData.canAddReview = canAddReview;
               }
             },
             complete:() => {
@@ -108,7 +109,8 @@ App({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     openid:'',
     session_key:'',
-    hasInfoData:false
+    hasInfoData:false,
+    canAddReview: false
   },
 
 })

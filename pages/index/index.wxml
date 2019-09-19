@@ -9,7 +9,7 @@
     <view class="blog-review">
       <view class="add-review">
         <view class="review">精选留言</view>
-        <view class="add" bind:tap="addReview">写留言</view>
+        <view class="add" bind:tap="addReview" wx:if="{{canAddReview}}">写留言</view>
       </view>
       <view class="reivew-list">
         <block wx:if="{{reivewList.length > 0 }}">
