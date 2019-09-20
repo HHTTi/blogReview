@@ -10,10 +10,17 @@ Page({
     reivewList:[],
     time: (new Date()).toString(),
     likes_success:false,
-    canAddReview:false
+    canAddReview:false,
+    showInput:false,
+    inputValue:''
   },
 
-
+  // replyValue input 双向绑定
+  addReviewValue(e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
   // get 评论列表
   getBlogReview(){
     var _this = this;
@@ -46,24 +53,7 @@ Page({
       }
     })
   },
-  test() {
-    var _this = this;
-    const { blog_id, openid, baseurl } = app.globalData;
-    if (!blog_id) {
-      return;
-    };
-    wx.request({
-      url: baseurl + '/article_user_message_and_likes',
-      data: {
-        blog_id,
-        openId: openid
-      },
-      method: "POST",
-      success: function (res) {
-        console.log('article_user_message_and_likes',res.data)
-      }
-    })
-  },
+
   // 点赞 或者 取消点赞 
   addParised(e){
     var _this = this;
@@ -138,10 +128,63 @@ Page({
       return;
     }
     if (!canAddReview) return;
-    wx.navigateTo({
-      url: '../addReview/addReview',
-    })
+    this.setData({ showInput:true })
   },
+
+  // 管路员回复留言
+  sendAddReview(e) {
+    var _this = this;
+    const id = e.target.id;//send,cancel
+    if (id === 'cancel') {
+      this.setData({
+        showInput: false,
+        inputValue: ''
+      })
+    } else if (id === 'send') {
+      const { inputValue } = this.data;
+      // console.log('add_user_message', message);
+      if (!inputValue) return;
+      const { blog_id, openid, baseurl, userInfo } = app.globalData;
+
+      wx.request({
+        url: baseurl + '/add_user_message',
+        data: {
+          blog_id,
+          openId: openid,
+          user_message: inputValue,
+          user_nickName: userInfo.nickName,
+          user_avatarUrl: userInfo.avatarUrl
+        },
+        method: "POST",
+        success: function (res) {
+          // console.log(res.data)
+          if (res.data.code) {
+            wx.showToast({
+              title: '留言成功',
+              icon: 'success',
+              duration: 1000,
+              success: _this.getBlogReview()
+            });
+          } else {
+            wx.showToast({
+              title: '留言失败,请稍后再试',
+              icon: 'none',
+              duration: 2000,
+            });
+          }
+        },
+        complete:() => {
+          this.setData({
+            showInput: false,
+          })
+        }
+      })
+      
+    }
+
+  },
+
+
   // 改变this.data
   changeData(){
     const { blog_id, blog_url, title, canAddReview } = app.globalData;

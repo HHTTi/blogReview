@@ -1,4 +1,6 @@
 /**index.wxss**/
+
+
 .blog-hd {
   width: 100%;
   padding: 40rpx 0;
@@ -99,6 +101,62 @@
   align-items: center;
   color: #ff4b1f;
   vertical-align: baseline;
+}
+
+.blog-ft {
+  padding-bottom: 100rpx;
+}
+.addReview {
+  position: fixed;
+  bottom: 0;
+  z-index: 3;
+  height: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  overflow: hidden;
+  transition: all .2s linear;
+}
+
+.addReview button {
+margin: 0;
+margin-left: 10rpx;
+}
+.show-input {
+height: 100rpx;
+}
+.review-btns {
+display: flex;
+align-items: center;
+height: 100%;
+
+}
+.review-btns button {
+max-height: 100%;
+display: inline-block;
+line-height: 2.3;
+font-size: 13px;
+
+}
+.reply-input {
+  box-sizing: border-box;
+  padding-left: 30rpx;
+  width: 60%;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 30rpx;
+  background: #F6F4F5;
+}
+#send {
+  background: #ff4b1f;
+  color: #fff;
+}
+#cancel {
+background:#fff;
+color: #ff4b1f;
 }
 
 .no-item {

@@ -37,6 +37,7 @@
               </view>
             </view>
           </view>
+          
         </block>
         <block wx:else >
           <view class="no-item">
@@ -46,5 +47,17 @@
       </view>
     </view>
   </view>
-  <view class="blog-ft"></view>
+  <view class="blog-ft">
+    <view  class="addReview {{ showInput ? 'show-input':''}}">
+      <!-- <form class="reply-form" catchsubmit="sendReply" > -->
+      <view class="reply-input">
+          <input class="" bindinput="addReviewValue" name="review" placeholder="留言："/>
+      </view>
+      <view class="review-btns" catch:tap="sendAddReview" >
+          <button id="send" >发送</button>
+          <button id="cancel">取消</button>
+      </view>
+      <!-- </form> -->
+    </view>
+  </view>
 </view>
