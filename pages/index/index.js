@@ -58,15 +58,16 @@ Page({
   addParised(e){
     var _this = this;
     const { blog_id, openid, baseurl, userInfo } = app.globalData;
+    console.log(this.data.likes_success, blog_id)
     if (!userInfo) {
-      
       wx.switchTab({
         url: '../mine/mine'
       });
       return;
     }
-    if (!this.data.likes_success || !blog_id ) return;
     var { index ,id }  = e.currentTarget.dataset;
+    if (!id || !blog_id) return;
+
     // console.log('u_message_id', id)
     wx.request({
       url: `${baseurl}/add_u_msg_like?blog_id=${blog_id}&openId=${openid}&u_message_id=${id}`,
@@ -111,7 +112,6 @@ Page({
           }
           _this.setData({
             reivewList: list,
-            likes_success:true
           })
         }
       }
