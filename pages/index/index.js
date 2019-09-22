@@ -189,14 +189,16 @@ Page({
   changeData(){
     const { blog_id, blog_url, title, canAddReview } = app.globalData;
     if(!blog_id) {
-      wx.switchTab({
-        url: '../article_list/article_list',
-        success:()=>{ 
-          wx.showToast({
-            title: '当前暂未选择文章，去文章列表看看吧~',
-            icon: 'none',
-            duration: 2000,
+      wx.showToast({
+        title: '当前暂未选择文章，去文章列表看看吧~',
+        icon: 'none',
+        duration: 2000,
+        success: () => {
+          setTimeout(function () {
+          wx.switchTab({
+            url: '../article_list/article_list',
           })
+          },1500)
         }
       });
     }
