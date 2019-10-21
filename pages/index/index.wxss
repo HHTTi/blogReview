@@ -107,11 +107,15 @@
   padding-bottom: 100rpx;
 }
 .addReview {
+  box-sizing: border-box;
+
   position: fixed;
   bottom: 0;
   z-index: 3;
   height: 0;
   width: 100%;
+  padding: 0 28rpx;
+
   display: flex;
   justify-content: space-between;
   align-items: center;

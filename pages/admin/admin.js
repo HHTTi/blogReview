@@ -12,7 +12,8 @@ Page({
     list:[], //留言列表
     inputShow:-1,
     inputValue:'', //作者回复内容
-    replyItem:null //回复 的参数
+    replyItem:null, //回复 的参数
+    articleList:[]
   },
   // 登录请求
   postLogin: function (e) {
@@ -43,7 +44,39 @@ Page({
 
     })
   },
-
+  is_admin(){
+    const { baseurl, openid } = app.globalData;
+    var _this = this;
+    wx.request({
+      url: baseurl + '/is_admin?openId=' + openid,
+      method: 'GET',
+      success: (res) => {
+        const { code, msg } = res.data;
+        if (code) {
+          _this.setData({ token: msg.token }, () => {
+            _this.admin_all_message()
+          });
+        }
+      }
+    })
+  },
+  //查询文章id
+  showArticleBtn(){
+    let _this = this;
+    const { baseurl, openid } = app.globalData;
+    if (this.data.articleList.length >0) return;
+    wx.request({
+      url: baseurl + '/admin_get_article?token=' + this.data.token,
+      method: 'GET',
+      success: (res) => {
+        const { code, msg } = res.data;
+        console.log('msg',msg)
+        if (code) {
+          _this.setData({ articleList: msg });
+        }
+      }
+    })
+  },
   // 获取留言列表
   admin_all_message(){
     var _this = this;
@@ -221,7 +254,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.is_admin();
   },
 
   /**

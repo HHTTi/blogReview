@@ -51,7 +51,7 @@
     <view  class="addReview {{ showInput ? 'show-input':''}}">
       <!-- <form class="reply-form" catchsubmit="sendReply" > -->
       <view class="reply-input">
-          <input class="" bindinput="addReviewValue" name="review" placeholder="留言："/>
+          <input class="" cursor-spacing="10" bindinput="addReviewValue" name="review" placeholder="留言："/>
       </view>
       <view class="review-btns" catch:tap="sendAddReview" >
           <button id="send" >发送</button>

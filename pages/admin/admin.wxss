@@ -34,6 +34,26 @@
     color: #fff;
     background: #ff4b1f;
 }
+.showArticle {
+  width: 100%;
+}
+.showArticleList {
+  padding: 28rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+}
+.article_id {
+  padding-right: 28rpx;
+  color: #ff4b1f;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.article_title {
+  color: #6E6E6E;
+}
+
 
 .list {
     padding: 28rpx 0;
